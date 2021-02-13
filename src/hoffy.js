@@ -82,11 +82,52 @@ const c = {
         }
     }
 
+    ,constrainDecorator(fn, min, max) {
+
+        return function(...args) {
+
+            let result = fn(...args);
+
+            if (result > max) {
+
+                result = max;
+
+            } else if (result < min) {
+                
+                result = min;
+            }
+
+            return result;
+        }
+    }
+
+    ,limitCallsDecorator(fn, n) {
+
+        let numberOfCalls = 0;
+
+        return function(...args) {
+
+            if (numberOfCalls < n) {
+                numberOfCalls++;
+                const result = fn(...args);
+                return result;
+            } else {
+                return undefined;
+            }
+        }
+    }
+
+
     ,compose(fn1, fn2, ...fnN) {
 
-        return null;
+        return function(...args) {
+
+
+
+
 
     }
+
 
 }
 
