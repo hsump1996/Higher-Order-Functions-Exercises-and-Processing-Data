@@ -3,7 +3,6 @@
  * write and export higher order functions below
  */
 
-
 const c = {
 
     //Assume that an empty Array or Array of Number s is passed in; No need to check types
@@ -122,13 +121,12 @@ const c = {
 
         return function(...args) {
 
-
-
-
-
+            const result = (...fnN) => {
+                return fnN.reduceRight((fn1, fn2) => (...args) => fn2(fn1(...args)));
+            }
+            
+        }
     }
-
-
 }
 
 module.exports = c;
