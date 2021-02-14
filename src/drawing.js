@@ -5,15 +5,38 @@
 class GenericElement{
 
     constructor(name) {
-        this.name = name;
+        this.attribute.name = name;
+        this.childList = [];
     }
 
     get addAttr(name, value) {
-        this[name] = value;
+        this.attribute[name] = value;
     }
 
     get addAttrs(obj) {
         Object.assign(this, obj)
+    }
+
+    get addChild(child) {
+
+        childList.push(child);
+
+    }
+
+    get toString() {
+
+        const childList = Object.keys(this).childList;
+
+        const {cx, cy} = this.loc;
+        return `<svg xmlns="http://www.w3.org/2000/svg">
+        <circle cx="${cx}" cy="${cy}" r="${this.r}" fill="${this.fill}"></circle>
+        
+        
+        </svg>`
+    } 
+
+    get write(fileName, cb) {
+        const fs = require('fs')
     }
   
 }
@@ -22,25 +45,9 @@ class RootElement extends GenericElement {
 
     constructor() {
       
-        const xmlns = "http://www.w3.org/2000/svg";
-    
+        this.xmlns = "http://www.w3.org/2000/svg";    
     }
 
-    get toString() {
-        const {cx, cy} = this.loc;
-        return `<svg xmlns="http://www.w3.org/2000/svg">
-        <circle cx="${cx}" cy="${cy}" r="${this.r}" fill="${this.fill}"></circle>
-</svg>`
-    }
-
-    get write(fileName, cb) {
-
-    }
-
-    get addChild(child) {
-
-
-    }
 }
 
 
