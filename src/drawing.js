@@ -1,23 +1,29 @@
 // Add code here
 
-class RootElement {
+
+
+class GenericElement{
+
+    constructor(name) {
+        this.name = name;
+    }
+
+    get addAttr(name, value) {
+        this[name] = value;
+    }
+
+    get addAttrs(obj) {
+        Object.assign(this, obj)
+    }
+  
+}
+
+class RootElement extends GenericElement {
 
     constructor() {
       
         const xmlns = "http://www.w3.org/2000/svg";
     
-    }
-
-    get addAttr(name, value) {
-
-
-    }
-
-
-    get addChild(child) {
-
-
-
     }
 
     get toString() {
@@ -29,36 +35,18 @@ class RootElement {
 
     get write(fileName, cb) {
 
+    }
+
+    get addChild(child) {
 
 
     }
 }
 
-class GenericElement extends RootElement {
 
-    constructor(name) {
-      
-        this.name = name;
-    
-    }
-
-    get addAttr(name, value) {
-
-
-    }
-
-    get addAttrs(obj) {
-
-
-    }
-  
-}
-
-
-class RectangleElement extends RootElement{
+class RectangleElement extends GenericElement{
     
     constructor(x, y, width, height, fill) {
-        
         this.x = x; // the value for the x attribute of this rect element
         this.y = y; // the value for the y attribute of this rect element
         this.width = width; // the value for the width attribute of this rect element
@@ -67,7 +55,7 @@ class RectangleElement extends RootElement{
     }
 }
 
-class TextElement extends RootElement {
+class TextElement extends GenericElement {
 
     constructor(x, y, fontSize, fill, content) {
         
