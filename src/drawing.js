@@ -21,9 +21,10 @@ class RootElement {
     }
 
     get toString() {
-
-
-
+        const {cx, cy} = this.loc;
+        return `<svg xmlns="http://www.w3.org/2000/svg">
+        <circle cx="${cx}" cy="${cy}" r="${this.r}" fill="${this.fill}"></circle>
+</svg>`
     }
 
     get write(fileName, cb) {
@@ -49,7 +50,6 @@ class GenericElement extends RootElement {
     get addAttrs(obj) {
 
 
-
     }
   
 }
@@ -65,15 +65,6 @@ class RectangleElement extends RootElement{
         this.height = height; // the value for the height attribute of this rect element
         this.fill = fill; //  the value for the fill attribute of this rect element as a color string, such as "red", "green", etc.
     }
-
-    get addAttr(name, value) {
-
-
-    }
-
-
-
-
 }
 
 class TextElement extends RootElement {
@@ -87,12 +78,6 @@ class TextElement extends RootElement {
         this.content = content; // content between the text tags; the actual text
 
     }
-
-    get addAttr(name, value) {
-
-
-    }
-  
 }
 
 module.exports = {
