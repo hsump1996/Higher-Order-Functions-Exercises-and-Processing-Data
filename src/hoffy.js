@@ -120,11 +120,8 @@ const c = {
     ,compose(fn1, fn2, ...fnN) {
 
         return function(...args) {
-
-            const result = (...fnN) => {
-                return fnN.reduceRight((fn1, fn2) => (...args) => fn2(fn1(...args)));
-            }
-            
+            const compose = (...fnN) => (...args) => functions.reduceRight((arg, fn1) => function(arg), args);
+            return result;
         }
     }
 }
