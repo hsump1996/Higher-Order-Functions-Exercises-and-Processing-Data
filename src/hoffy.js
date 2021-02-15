@@ -117,14 +117,14 @@ const c = {
     }
 
 
-    ,compose(fn1, fn2, ...fnN) {
+    ,compose(...fnN) {
 
-        return function(...args) {
-            const compose = (...fnN) => (...args) => functions.reduceRight((arg, fn1) => function(arg), args);
-            return result;
+        return function(arg) {
+
+            return fnN.reduce( (accumulator, fn) => { return fn(accumulator)}, arg)
+
         }
     }
 }
-
 module.exports = c;
 
