@@ -41,7 +41,14 @@ const c = {
 
     ,getAverageLength(data) {
 
+        const filteredMovies = data.filter(movie => 'Running time (int)' in movie);
+        const numberOfMovies = filteredMovies.length;
 
+        const totalRunningTime = filteredMovies
+            .map(movie => movie["Running time (int)"])
+            .reduce( (accumulator, runningTime) => accumulator + runningTime);
+
+        return totalRunningTime / numberOfMovies;
     }
 
 }
@@ -49,9 +56,7 @@ const c = {
 
 module.exports = c;
 
-
 const file = require("./disney_movies.json");
 
 const data = JSON.parse(JSON.stringify(file))
 
-console.log(c.listCriticallyAcclaimedMovies(data));
