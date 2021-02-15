@@ -35,7 +35,7 @@ const c = {
 
     ,listCriticallyAcclaimedMovies(data) {
         
-        return data.filter(movie => parseFloat(movie.metascore) > 8.0).map(movie => ({"title": movie.title, "metascore": movie.metascore}));
+        return data.filter(movie => 'title' in movie && parseFloat(movie.metascore) > 8.0).map(movie => ({"title": movie.title, "metascore": movie.metascore}));
 
     }
 
