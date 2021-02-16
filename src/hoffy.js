@@ -6,9 +6,9 @@
 const c = {
 
     //Assume that an empty Array or Array of Number s is passed in; No need to check types
-    makeSet: function(num_1, ...num_n) {
+    makeSet: function(num1, ...numn) {
 
-        const array = [num_1, ...num_n];
+        const array = [num1, ...numn];
 
         const set = new Set(array);
 
@@ -28,12 +28,12 @@ const c = {
 
         arr.map((element, index) => 
         {if (compareFunc(num, element)) {
-            returnArray.push(index)
+            returnArray.push(index);
         } });
 
-        if (returnArray.length == 0) {
-            returnArray.push(-1)
-            return returnArray
+        if (returnArray.length === 0) {
+            returnArray.push(-1);
+            return returnArray;
         } 
 
         return returnArray;
@@ -47,12 +47,12 @@ const c = {
             const newArray = [];
             arr.map((element) => 
             {if (fn(element)) {
-            newArray.push(element)
+            newArray.push(element);
             } });
 
             return newArray;
 
-        }
+        };
     }
 
     ,intersection(arr1, arr2) {
@@ -73,11 +73,11 @@ const c = {
 
     ,repeatCall(fn, n, arg) {
         
-        if (n == 0) {
+        if (n === 0) {
             return undefined;
         } else {
             fn(arg);
-            this.repeatCall(fn, n-1, arg)
+            this.repeatCall(fn, n-1, arg);
         }
     }
 
@@ -97,7 +97,7 @@ const c = {
             }
 
             return result;
-        }
+        };
     }
 
     ,limitCallsDecorator(fn, n) {
@@ -113,7 +113,7 @@ const c = {
             } else {
                 return undefined;
             }
-        }
+        };
     }
 
 
@@ -121,10 +121,10 @@ const c = {
 
         return function(arg) {
 
-            return fnN.reduce( (accumulator, fn) => { return fn(accumulator)}, arg)
+            return fnN.reduce( (accumulator, fn) => { return fn(accumulator);}, arg);
 
-        }
+        };
     }
-}
+};
 module.exports = c;
 

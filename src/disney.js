@@ -7,7 +7,7 @@ const c = {
     bestMovie(data) {
         let rating = 0;
         let movie = null;
-        let movies = [];
+        const movies = [];
 
         data.map((element) => 
         {if (parseFloat(element.imdb_rating) >= rating) {
@@ -15,8 +15,8 @@ const c = {
         } });
 
         data.map((element) => 
-        {if (parseFloat(element.imdb_rating) == rating) {
-            movies.push(element)
+        {if (parseFloat(element.imdb_rating) === rating) {
+            movies.push(element);
         } });
 
         if (movies.length === 1) {
@@ -27,9 +27,9 @@ const c = {
         }
     }
 
-    ,getMoviesByActor(data, actor_name) {
+    ,getMoviesByActor(data, actorName) {
         
-        return data.filter(movie => 'Starring' in movie && movie.Starring.includes(actor_name));
+        return data.filter(movie => 'Starring' in movie && movie.Starring.includes(actorName));
         
     }
 
@@ -51,7 +51,7 @@ const c = {
         return totalRunningTime / numberOfMovies;
     }
 
-}
+};
 
 
 module.exports = c;

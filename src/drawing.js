@@ -13,7 +13,7 @@ class GenericElement{
     }
 
     addAttrs(obj) {
-        Object.assign(this.attribute, obj)
+        Object.assign(this.attribute, obj);
     }
 
     addChild(child) {
@@ -34,10 +34,10 @@ class GenericElement{
     } 
 
     write(fileName, cb) {
-        const fs = require('fs')
-        fs.writeFile(fileName, this.toString(), cb) 
+        const fs = require('fs');
+        fs.writeFile(fileName, this.toString(), cb); 
     }
-};
+}
 
 class RootElement extends GenericElement {
 
@@ -64,7 +64,7 @@ class RectangleElement extends GenericElement{
         
         return `<${this.name} ` + this.generateAttributeString() + ">" + "\n" + `</${this.name}>`;
     } 
-};
+}
 
 
 class TextElement extends GenericElement {
@@ -80,7 +80,7 @@ class TextElement extends GenericElement {
     }
 
     toString() {
-        return `<${this.name} ` + this.generateAttributeString() +  `>` + this.content + "\n" + `</${this.name}>`;
+        return `<${this.name} ` + this.generateAttributeString() + `>` + this.content + "\n" + `</${this.name}>`;
     } 
 }
 
