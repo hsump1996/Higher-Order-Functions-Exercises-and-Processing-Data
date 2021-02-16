@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="25" width="170" height="25" fill="green">
+</rect>
+<text x="250" y="45" fill="black" font-size="15"> The Lion King
+</text>
+<rect x="0" y="55" width="166" height="25" fill="green">
+</rect>  
+<text x="250" y="75" fill="black" font-size="15"> Toy Story
+</text>
+<rect x="0" y="85" width="166" height="25" fill="green">
+</rect>
+<text x="250" y="105" fill="black" font-size="15"> The Kid
+</text>
+</svg>

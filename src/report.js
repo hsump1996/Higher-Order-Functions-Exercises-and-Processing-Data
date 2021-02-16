@@ -2,7 +2,6 @@
 
 //Brings in the functions from disney.js
 const c = require("./disney.js");
-const d = require("./drawing.js");
 
 //Retrieves the path specified when report.js is run on the command line
 const pathToFile = process.argv[2];
@@ -19,9 +18,9 @@ console.log(`* The best movie by IMDB rating is: ${c.bestMovie(data).title}`);
 //Top 5 Critically acclaimed movies, as an Array of objects with movie title and meta
 console.log(`* Top 5 Critically acclaimed movies: ` + JSON.stringify(c.listCriticallyAcclaimedMovies(data).slice(0,5)));
 
-let movies = c.getMoviesByActor(data, "Johnny Depp");
+const movies = c.getMoviesByActor(data, "Johnny Depp");
 
-let titles = movies.map(movie => movie.title);
+const titles = movies.map(movie => movie.title);
 
 //Movies starring Johnny Depp, as an Array of titles only
 console.log(`* Movies starring Johnny Depp: ` + JSON.stringify(titles));
@@ -30,32 +29,31 @@ console.log(`* Movies starring Johnny Depp: ` + JSON.stringify(titles));
 console.log(`* Average running time: ${c.getAverageLength(data)}`);
 
 
-
 // Top 3 highly acclaimed movies.
-const acclaimedMovies = c.listCriticallyAcclaimedMovies(data).slice(0,2);
-const acclaimedMovie1 = acclaimedMovies[0];
-const acclaimedMovie2 = acclaimedMovies[1];
-const acclaimedMovie3 = acclaimedMovies[2];
+const acclaimedMovies = c.listCriticallyAcclaimedMovies(data).slice(0,3);
 
-const root = 
+const metascores = acclaimedMovies.map(movie => movie.metascore);
+const titles2 = acclaimedMovies.map(movie => movie.title);
+
+const fs = require('fs');
+const fullBarLength = 200;
+const svgContents = 
 `<svg xmlns="http://www.w3.org/2000/svg">
-<rect x="0" y="25" width="200" height="25" fill="green">
+<rect x="0" y="25" width="${metascores[0]/10 * fullBarLength}" height="25" fill="green">
 </rect>
-<text x="210" y="45" fill="black" font-size="20"> ${acclaimedMovie1}
+<text x="250" y="45" fill="black" font-size="15"> ${titles2[0]}
 </text>
-<rect x="0" y="55" width="65" height="25" fill="green">
-</rect>
-<text x="70" y="75" fill="black" font-size="20"> ${acclaimedMovie2}
+<rect x="0" y="55" width="${metascores[1]/10 * fullBarLength}" height="25" fill="green">
+</rect>  
+<text x="250" y="75" fill="black" font-size="15"> ${titles2[1]}
 </text>
-<rect x="0" y="85" width="240" height="25" fill="green">
+<rect x="0" y="85" width="${metascores[2]/10 * fullBarLength}" height="25" fill="green">
 </rect>
-<text x="250" y="105" fill="black" font-size="20"> ${acclaimedMovie3}
+<text x="250" y="105" fill="black" font-size="15"> ${titles2[2]}
 </text>
 </svg>`;
 
-root.write('chart.svg', () => console.log('done writing!'));
-
-
-
-
-
+fs.writeFile('chart.svg', svgContents, function(err) {
+    if (err) { 
+        return console.log(err);
+    }});
