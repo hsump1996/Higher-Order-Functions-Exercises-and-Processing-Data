@@ -56,7 +56,3 @@ const c = {
 
 module.exports = c;
 
-const file = require("./disney_movies.json");
-
-const data = JSON.parse(JSON.stringify(file))
-
