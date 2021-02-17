@@ -48,7 +48,6 @@ class RootElement extends GenericElement {
 
 }
 
-
 class RectangleElement extends GenericElement{
     
     constructor(x, y, width, height, fill) {
@@ -90,3 +89,4 @@ module.exports = {
     RectangleElement,
     TextElement
 };
+

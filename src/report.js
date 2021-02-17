@@ -29,7 +29,7 @@ console.log(`* Movies starring Johnny Depp: ` + JSON.stringify(titles));
 console.log(`* Average running time: ${c.getAverageLength(data)}`);
 
 
-// Top 3 highly acclaimed movies.
+// Shows Bar Chart for Top 3 highly acclaimed movies.
 const acclaimedMovies = c.listCriticallyAcclaimedMovies(data).slice(0,3);
 
 const metascores = acclaimedMovies.map(movie => movie.metascore);
@@ -39,7 +39,7 @@ const fs = require('fs');
 const fullBarLength = 200;
 const svgContents = 
 `<svg xmlns="http://www.w3.org/2000/svg">
-<rect x="0" y="25" width="${metascores[0]/10 * fullBarLength}" height="25" fill="green">
+<rect x="0" y="25" width="${metascores[0]/10 * fullBarLength}" height="25" fill="red">
 </rect>
 <text x="250" y="45" fill="black" font-size="15"> ${titles2[0]}
 </text>
@@ -47,13 +47,14 @@ const svgContents =
 </rect>  
 <text x="250" y="75" fill="black" font-size="15"> ${titles2[1]}
 </text>
-<rect x="0" y="85" width="${metascores[2]/10 * fullBarLength}" height="25" fill="green">
+<rect x="0" y="85" width="${metascores[2]/10 * fullBarLength}" height="25" fill="blue">
 </rect>
 <text x="250" y="105" fill="black" font-size="15"> ${titles2[2]}
 </text>
 </svg>`;
 
-fs.writeFile('chart.svg', svgContents, function(err) {
-    if (err) { 
-        return console.log(err);
-    }});
+fs.writeFile('chart.svg', svgContents, function(error) {
+    if (error) { 
+        return console.log("Error has occurred!");
+    }
+});
